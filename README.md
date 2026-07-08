@@ -1,32 +1,27 @@
-# zsh kernel for jupyter
+# Zsh kernel for Jupyter
 
-![screenshot](misc/example.png)
+![](https://raw.githubusercontent.com/dahn-zk/zsh-jupyter-kernel/master/screenshots/example.png)
 
-a simple z shell jupyter kernel powered by python 3, pexpect and enthusiasm.
-
-i love experimentation and tinkering, but usual shell terminals do not allow developing multiple different code snippets at once conveniently.
-with shell kernels you can turn your scripts into notebooks!
-
-if you find this product useful, please consider supporting me with a one-time tip.
-
-feedback and suggestions are welcome in [github issues](https://github.com/dan-oak/zsh-jupyter-kernel/issues).
+a simple Z Shell Jupyter kernel powered by Python, IPyKernel, Pexpect,
+and enthusiasm — turn your scripts into notebooks!
 
 ## installation
 
-install the python package from [pypi](https://pypi.org/project/zsh-jupyter-kernel/) using available package manager like `pip` or `pipenv`
+install the python package from [pypi](https://pypi.org/project/zsh-jupyter-kernel/) using available package manager like `pip`, `pipenv` or `conda`.
 
-(optional) by default `python -m zsh_jupyter_kernel.install` attempts to install the kernelspec system-wide (this may require admin privileges). use `--sys-prefix` to install into the current python environment (virtualenv/pipenv/conda), `--user` for per-user install, or check `python -m zsh_jupyter_kernel.install -h` for more options.
+(optional) by default the installation script will install the package *and* the kernel. the kernel location will be the same as the python environment from which the installation is done. check `python -m zsh_jupyter_kernel.install -h` for possible installation options if you want to install the kernel in a different environment or to change display name.
 
 ### pipenv
 
 ```sh
-pipenv --python 3.10 install notebook zsh_jupyter_kernel
+pip install zsh_jupyter_kernel
 ```
 
-### pip
+### install kernel file
 
+see the help command for details
 ```sh
-python -m pip install notebook zsh_jupyter_kernel
+python -m zsh_jupyter_kernel.install --help
 ```
 
 ### conda
@@ -59,25 +54,9 @@ code completion is powered by quite a non-trivial script that involves multiple 
 
 ### code inspection
 
-code inspection is done by `man --pager ul` which sends the whole man page to the frontend.
-
-### code completeness
-
-code completeness is checked with the temporary zsh process and help of `EXEC` zsh option, which allows switching off code execution and simply check if the code is complete using the exit code of the zsh process itself.
-
-### stderr
-
-stderr content is just sent to the front-end as regular stdout the same way it is in a terminal.
-
-### stdin
-
-stdin is not supported because of the execution system when a process spawned by a user waits for stdin, there is no way to detect it.
-
-jupyter is a request-reply system, and zsh as a shell that constantly receives input and prints whatever current processes want to output. there is no clear start and end of a code execution in a shell unlike in jupyter system: a front-end sends a code from a cell to a kernel and waits until the kernel sends the full output back.
-
-because of these two different ways of interacting with user zsh jupyter kernel cannot process stdin in a way python kernel does on `input()`, meaning you will not be able to enter a sudo password or answer y/n to prompts or use a pager like less. when a spawned program waits for a user input, you will need to interrupt the kernel and use any options which do not require input.
-
-## troubleshooting
-
-please let me know if you encounter an error or unexpected behavior using [github issues](https://github.com/dan-oak/zsh-jupyter-kernel/issues).
-i will respond as soon as possible.
+```sh
+pip install uv
+uv sync
+uv run python -m zsh_jupyter_kernel.install --sys-prefix
+uv run pytest
+```
