@@ -17,13 +17,6 @@ install the python package from [pypi](https://pypi.org/project/zsh-jupyter-kern
 
 (optional) by default `python -m zsh_jupyter_kernel.install` attempts to install the kernelspec system-wide (this may require admin privileges). use `--sys-prefix` to install into the current python environment (virtualenv/pipenv/conda), `--user` for per-user install, or check `python -m zsh_jupyter_kernel.install -h` for more options.
 
-```sh
-conda create -n zsh-jupyter-kernel python=3.10
-conda activate zsh-jupyter-kernel
-conda install -c conda-forge notebook zsh-jupyter-kernel
-python -m zsh_jupyter_kernel.install --sys-prefix
-```
-
 ### pipenv
 
 ```sh
@@ -34,6 +27,15 @@ pipenv --python 3.10 install notebook zsh_jupyter_kernel
 
 ```sh
 python -m pip install notebook zsh_jupyter_kernel
+```
+
+### conda
+
+```sh
+conda create -n zsh-jupyter-kernel python=3.10
+conda activate zsh-jupyter-kernel
+conda install -c conda-forge notebook zsh-jupyter-kernel
+python -m zsh_jupyter_kernel.install --sys-prefix
 ```
 
 ## usage
