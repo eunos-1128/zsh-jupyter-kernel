@@ -32,9 +32,9 @@ python -m pip install notebook zsh_jupyter_kernel
 ### conda
 
 ```sh
-conda create -n zsh-jupyter-kernel python=3.10
+conda create -n zsh-jupyter-kernel
 conda activate zsh-jupyter-kernel
-conda install -c conda-forge notebook zsh-jupyter-kernel
+conda install -c conda-forge zsh-jupyter-kernel
 python -m zsh_jupyter_kernel.install --sys-prefix
 ```
 
