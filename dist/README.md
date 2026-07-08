@@ -28,6 +28,14 @@ pip install --index-url https://test.pypi.org/simple/ zsh-jupyter-kernel
 python -m zsh_jupyter_kernel.install --sys-prefix
 ```
 
+to install from conda-forge in a new environment:
+
+```zsh
+conda create -n zsh-jupyter-kernel python=3.10
+conda activate zsh-jupyter-kernel
+conda install -c conda-forge notebook zsh-jupyter-kernel
+```
+
 to upload to production pypi set the version and execute:
 
 ```zsh
