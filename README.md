@@ -23,6 +23,7 @@ install the python package from [pypi](https://pypi.org/project/zsh-jupyter-kern
 conda create -n zsh-jupyter-kernel python=3.10
 conda activate zsh-jupyter-kernel
 conda install -c conda-forge notebook zsh-jupyter-kernel
+python -m zsh_jupyter_kernel.install --sys-prefix
 ```
 
 ### pipenv
