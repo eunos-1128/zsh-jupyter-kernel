@@ -15,9 +15,7 @@ feedback and suggestions are welcome in [github issues](https://github.com/dan-o
 
 install the python package from [pypi](https://pypi.org/project/zsh-jupyter-kernel/) using available package manager like `pip` or `pipenv`
 
-(optional) by default the installation script will install the package *and* the kernel. the kernel location will be the same as the python environment from which the installation is done. check `python -m zsh_jupyter_kernel.install -h` for possible installation options if you want to install the kernel in a different environment or to change display name.
-
-### conda
+(optional) by default `python -m zsh_jupyter_kernel.install` attempts to install the kernelspec system-wide (this may require admin privileges). use `--sys-prefix` to install into the current python environment (virtualenv/pipenv/conda), `--user` for per-user install, or check `python -m zsh_jupyter_kernel.install -h` for more options.
 
 ```sh
 conda create -n zsh-jupyter-kernel python=3.10
